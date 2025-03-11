@@ -1,0 +1,21 @@
+Denoising Comparison Report for im001-snow.jpg
+==================================================
+
+Processing Times:
+- Bilateral Filter: 0.00s
+- Non-Local Means: 0.08s
+- Detail Preserving (1 pass, level=0.7): 0.02s
+- Detail Preserving (2 passes, level=0.7): 0.03s
+- Auto Selected Method: 0.03s
+
+Noise Estimation:
+- Estimated Noise Level: 209.14
+
+File Paths:
+- Original Image: /Users/morgan/Documents/GitHub/COMP2271_IP/processed_images/multipass_comparison/1_original.jpg
+- Bilateral Filter: /Users/morgan/Documents/GitHub/COMP2271_IP/processed_images/multipass_comparison/2_bilateral.jpg
+- Non-Local Means: /Users/morgan/Documents/GitHub/COMP2271_IP/processed_images/multipass_comparison/3_nlm.jpg
+- Detail Preserving (1 pass): /Users/morgan/Documents/GitHub/COMP2271_IP/processed_images/multipass_comparison/4_detail_preserved_1pass.jpg
+- Detail Preserving (2 passes): /Users/morgan/Documents/GitHub/COMP2271_IP/processed_images/multipass_comparison/5_detail_preserved_2pass.jpg
+- Auto Selected: /Users/morgan/Documents/GitHub/COMP2271_IP/processed_images/multipass_comparison/6_auto.jpg
+- Comparison Image: /Users/morgan/Documents/GitHub/COMP2271_IP/processed_images/multipass_comparison/comparison.png
