@@ -19,7 +19,7 @@ PATCHMATCH_AVAILABLE = False
 try:
     # Try to import the patch_match module
     sys.path.append(os.path.join(os.path.dirname(__file__), 'PyPatchMatch'))
-    import PyPatchMatch.patch_match as patch_match
+    import patch_match
     PATCHMATCH_AVAILABLE = True
     print("Successfully loaded PyPatchMatch for inpainting.")
 except ImportError as e:
