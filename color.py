@@ -221,29 +221,6 @@ class EnhancedColorCorrector:
         
         return result
     
-    def remove_noise(self, image):
-        """Remove noise while preserving edges."""
-        # Create a mask for non-black pixels
-        non_black = np.logical_or.reduce((
-            image[:,:,0] > 5,
-            image[:,:,1] > 5,
-            image[:,:,2] > 5
-        ))
-        
-        # Only process if there are non-black pixels
-        if not np.any(non_black):
-            return image
-        
-        # Apply bilateral filtering to reduce noise while preserving edges
-        # Parameters: src, d, sigmaColor, sigmaSpace
-        filtered = cv2.bilateralFilter(image, 9, 75, 75)
-        
-        # Apply the filtered image only to non-black regions
-        result = image.copy()
-        result[non_black] = filtered[non_black]
-        
-        return result
-    
     def auto_correct(self, image):
         """Apply automatic color correction based on image analysis."""
         # Analyze the image first
@@ -270,20 +247,6 @@ class EnhancedColorCorrector:
         if low_range or metrics['contrast'] < 40:
             image = self.enhance_contrast(image, metrics)
         
-        # Step 4: Optional Noise Reduction
-        # Analyzing the noise level in your examples, I'll skip this step by default
-        # But it's available if needed for future processing
-        # image = self.remove_noise(image)
-        
-        if self.debug:
-            # Debug code disabled due to matplotlib compatibility issues
-            # Print metrics instead
-            print(f"Image metrics:")
-            print(f"  Luminance: {metrics['luminance']:.1f}")
-            print(f"  Color Cast: {metrics['has_color_cast']}")
-            print(f"  Dominant: {metrics['dominant_color']}")
-            print(f"  Contrast: {metrics['contrast']:.1f}")
-            print(f"  Imbalance: {metrics['color_imbalance']:.1f}")
         
         return image
     
@@ -293,9 +256,7 @@ class EnhancedColorCorrector:
         os.makedirs(output_dir, exist_ok=True)
         
         # Get all image files
-        image_paths = glob.glob(os.path.join(input_dir, "*.jpg")) + \
-                     glob.glob(os.path.join(input_dir, "*.jpeg")) + \
-                     glob.glob(os.path.join(input_dir, "*.png"))
+        image_paths = glob.glob(os.path.join(input_dir, "*.jpg")) 
         
         success_count = 0
         total_count = len(image_paths)

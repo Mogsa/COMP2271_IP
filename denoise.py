@@ -3,10 +3,6 @@ import numpy as np
 import os
 import glob
 from skimage import exposure
-# Removed unnecessary imports to avoid dependency issues
-# import pywt
-# from scipy import ndimage, fftpack
-# from skimage import restoration, util, color
 
 class ImageDenoiser:
     def __init__(self, debug=False):
